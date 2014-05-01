@@ -15,3 +15,11 @@
 
 <h3>Comments</h3>
 <%= render @comments %>
+
+<%= form_for [@project, @comment] do |f| %>
+  <h3>Post a reply</h3>
+  <div class="field">
+    <%= f.text_area :text %>
+  </div>
+  <%= f.submit 'Submit' %>
+<% end %>
