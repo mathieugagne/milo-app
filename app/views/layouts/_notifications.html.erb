@@ -1,0 +1,6 @@
+<div class="flash-container"></div>
+<script type="text/javascript">
+  <% flash.each do |name, msg| %>
+    new Notification('<%= msg %>', '<%= name %>')
+  <% end -%>
+</script>
