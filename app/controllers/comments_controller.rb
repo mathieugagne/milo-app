@@ -6,7 +6,7 @@ class CommentsController < ApplicationController
     if @comment.save
       redirect_to @project, notice: 'Comment was successfully posted.'
     else
-      render @project
+      redirect_to @project, alert: @comment.errors.full_messages.join('. ')
     end
   end
 
