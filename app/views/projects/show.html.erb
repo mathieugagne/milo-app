@@ -12,7 +12,7 @@
 
 <p>
   <strong>Status:</strong>
-  <%= @project.status %>
+  <%= project_status_label(@project.status) %>
 </p>
 
 <%= link_to 'Edit', edit_project_path(@project) %> |
