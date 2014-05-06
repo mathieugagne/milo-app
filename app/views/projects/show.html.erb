@@ -19,7 +19,9 @@
 <%= link_to 'Back', projects_path %>
 
 <h3>Comments</h3>
-<%= render @comments %>
+<div class="comments">
+  <%= render @comments %>
+</div>
 
 <%= form_for [@project, @comment] do |f| %>
   <h3>Post a reply</h3>
