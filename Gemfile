@@ -37,3 +37,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+
+group :development do
+  gem 'faker'
+end
