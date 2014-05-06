@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.all
+    @projects = Project.order(sort_column => sort_direction)
   end
 
   # GET /projects/1
@@ -48,13 +48,24 @@ class ProjectsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_project
-      @project = Project.find(params[:id])
-    end
 
-    # Only allow a trusted parameter "white list" through.
-    def project_params
-      params.require(:project).permit(:title, :description, :status)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_project
+    @project = Project.find(params[:id])
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def project_params
+    params.require(:project).permit(:title, :description, :status)
+  end
+
+  def sort_column
+    Project.column_names.include?(params[:sort]) ? params[:sort] : :title
+  end
+  helper_method :sort_column
+
+  def sort_direction
+    %w(asc desc).include?(params[:direction]) ? params[:direction].to_sym : :asc
+  end
+  helper_method :sort_direction
 end

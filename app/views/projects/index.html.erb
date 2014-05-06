@@ -3,10 +3,10 @@
 <table>
   <thead>
     <tr>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Status</th>
-      <th>Comments</th>
+      <th><%= sortable_header :title %></th>
+      <th><%= sortable_header :description %></th>
+      <th><%= sortable_header :status %></th>
+      <th><%= sortable_header :comments_count, 'Comments' %></th>
       <th colspan="3"></th>
     </tr>
   </thead>
