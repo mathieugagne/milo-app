@@ -1,9 +1,9 @@
 <div class="comment">
   <blockquote>
     <p><%= comment.text %></p>
-    <p>
+    <footer>
       Written by <cite><%= comment.user.try(:email) %></cite> <%= time_ago_in_words(comment.created_at) %> ago
-    </p>
+    </footer>
   </blockquote>
-  <hr>
+  <hr />
 </div>
