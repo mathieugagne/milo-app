@@ -39,5 +39,5 @@ gem 'spring',        group: :development
 gem 'devise'
 
 group :development do
-  gem 'faker'
+  gem 'faker', '~> 1.3.0'
 end
