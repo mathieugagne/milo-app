@@ -37,6 +37,7 @@ gem 'spring',        group: :development
 # gem 'debugger', group: [:development, :test]
 
 gem 'devise'
+gem 'simple_form', github: 'plataformatec/simple_form'
 
 group :development do
   gem 'faker', '~> 1.3.0'
