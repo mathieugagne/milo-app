@@ -38,6 +38,7 @@ gem 'spring',        group: :development
 
 gem 'devise'
 gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'icon_tag'
 
 group :development do
   gem 'faker', '~> 1.3.0'
