@@ -42,6 +42,7 @@ gem 'icon_tag'
 gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'letter_opener'
 gem 'sucker_punch'
+gem 'carrierwave'
 
 group :development do
   gem 'faker', '~> 1.3.0'
