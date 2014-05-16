@@ -3,7 +3,7 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.order(sort_column => sort_direction)
+    @projects = Project.order(sort_column => sort_direction).page(params[:page]).per(10)
   end
 
   # GET /projects/1

@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/amatsuda/kaminari.git
+  revision: dd3a23197b78324f65c849328949890073db2d54
+  specs:
+    kaminari (0.15.1)
+      actionpack (>= 3.0.0)
+      activesupport (>= 3.0.0)
+
+GIT
   remote: git://github.com/plataformatec/simple_form.git
   revision: 9196efd2562573aa08037034051fc8c924083e10
   specs:
@@ -141,6 +149,7 @@ DEPENDENCIES
   faker (~> 1.3.0)
   icon_tag
   jquery-rails
+  kaminari!
   rails (= 4.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
