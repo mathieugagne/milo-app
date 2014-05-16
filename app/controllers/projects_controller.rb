@@ -3,7 +3,16 @@ class ProjectsController < ApplicationController
 
   # GET /projects
   def index
-    @projects = Project.order(sort_column => sort_direction).page(params[:page]).per(10)
+    redirect_to search_projects_path
+  end
+
+  def search
+    @search = Project.search do
+      fulltext params[:q]
+      order_by params[:sort] || :title, params[:direction] || :asc
+      paginate page: params[:page], per_page: 10
+    end
+    @projects = @search.results
   end
 
   # GET /projects/1
