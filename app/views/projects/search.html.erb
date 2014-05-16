@@ -1,43 +1,65 @@
-<div class="well">
-  <%= simple_form_for :search, url: search_projects_path, method: :get do |f| %>
-    <div class="row">
-      <div class="col-md-10">
-        <%= f.input :q, label: false, required: false, autofocus: true, input_html: {name: :q, value: params[:q]} %>
+<div class="row">
+  <div class="col-md-2">
+    <div class="panel panel-default">
+      <div class="panel-heading">
+        <%= link_to icon_tag('refresh'), params.except(:status), class: 'pull-right' %>
+        Status
       </div>
-      <div class="col-md-2">
-        <%= button_tag(type: 'submit', class: "btn btn-default") do %>
-          <%= icon_tag('search') %> Search
+      <ul class="list-group">
+        <% @search.facet(:status).rows.each do |facet| %>
+          <li class="list-group-item">
+            <span class="badge"><%= facet.count %></span>
+            <%= link_to project_status_label(facet.value), params.merge(status: facet.value) %>
+          </li>
         <% end -%>
-      </div>
+      </ul>
     </div>
-  <% end -%>
+  </div>
+  <div class="col-md-10">
+    <div class="well">
+      <%= simple_form_for :search, url: search_projects_path, method: :get do |f| %>
+        <%= f.input :status, as: :hidden, input_html: {name: :status, value: params[:status]} %>
+        <div class="row">
+          <div class="col-md-10">
+            <%= f.input :q, label: false, required: false, autofocus: true, input_html: {name: :q, value: params[:q]} %>
+          </div>
+          <div class="col-md-2">
+            <%= button_tag(type: 'submit', class: "btn btn-default") do %>
+              <%= icon_tag('search') %> Search
+            <% end -%>
+          </div>
+        </div>
+      <% end -%>
+    </div>
+
+    <table class='table'>
+      <thead>
+        <tr>
+          <th><%= sortable_header :title %></th>
+          <th><%= sortable_header :description %></th>
+          <th class='text-center'><%= sortable_header :status %></th>
+          <th>Assigned to</th>
+          <th class='text-center'><%= sortable_header :comments_count, 'Comments' %></th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
+
+      <tbody>
+        <% @projects.each do |project| %>
+          <tr>
+            <td><%= link_to project.title, project %></td>
+            <td class='text-muted'><%= truncate(project.description, length: 100, separator: ' ') %></td>
+            <td class='text-center'><%= project_status_label(project.status) %></td>
+            <td><%= project_user_list(project) %></td>
+            <td class='text-center'><%= project.comments_count %></td>
+            <td><%= link_to icon_tag('pencil'), edit_project_path(project), class: 'btn btn-default' %></td>
+            <td><%= link_to icon_tag('trash-o'), project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+
+    <%= paginate @projects %>
+  </div>
 </div>
 
-<table class='table'>
-  <thead>
-    <tr>
-      <th><%= sortable_header :title %></th>
-      <th><%= sortable_header :description %></th>
-      <th class='text-center'><%= sortable_header :status %></th>
-      <th>Assigned to</th>
-      <th class='text-center'><%= sortable_header :comments_count, 'Comments' %></th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @projects.each do |project| %>
-      <tr>
-        <td><%= link_to project.title, project %></td>
-        <td class='text-muted'><%= truncate(project.description, length: 100, separator: ' ') %></td>
-        <td class='text-center'><%= project_status_label(project.status) %></td>
-        <td><%= project_user_list(project) %></td>
-        <td class='text-center'><%= project.comments_count %></td>
-        <td><%= link_to icon_tag('pencil'), edit_project_path(project), class: 'btn btn-default' %></td>
-        <td><%= link_to icon_tag('trash-o'), project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<%= paginate @projects %>
