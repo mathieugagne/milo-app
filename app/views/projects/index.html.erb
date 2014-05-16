@@ -15,7 +15,7 @@
     <% @projects.each do |project| %>
       <tr>
         <td><%= link_to project.title, project %></td>
-        <td><%= project.description %></td>
+        <td class='text-muted'><%= truncate(project.description, length: 100, separator: ' ') %></td>
         <td class='text-center'><%= project_status_label(project.status) %></td>
         <td class='text-center'><%= project.comments_count %></td>
         <td><%= link_to icon_tag('pencil'), edit_project_path(project), class: 'btn btn-default' %></td>
