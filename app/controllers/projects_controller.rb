@@ -9,6 +9,8 @@ class ProjectsController < ApplicationController
   def search
     @search = Project.search do
       fulltext params[:q]
+      facet :status
+      with(:status, params[:status]) if params[:status].present?
       order_by params[:sort] || :title, params[:direction] || :asc
       paginate page: params[:page], per_page: 10
     end
