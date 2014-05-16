@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get '/profile', to: 'users#profile'
+
   get 'comments/create'
 
   devise_for :users

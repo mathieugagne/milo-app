@@ -1,0 +1,12 @@
+<h1 class="page-header"><%= current_user.email %>'s Profile</h1>
+
+<h3>Currently working on</h3>
+
+<ul class="list-group">
+  <% @projects.each do |p| %>
+    <li class="list-group-item">
+      <span class="pull-right"><%= project_status_label(p.status) %></span>
+      <%= link_to p.title, p %>
+    </li>
+  <% end %>
+</ul>

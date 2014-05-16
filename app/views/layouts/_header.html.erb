@@ -18,6 +18,7 @@
           <li><%= link_to "#{icon_tag('plus-circle')} New Project".html_safe, new_project_path %></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
+          <li><%= link_to icon_tag('user fa-2x'), profile_path %></li>
           <li><%= link_to "#{icon_tag('sign-out')} Logout".html_safe, destroy_user_session_path, method: :delete %></li>
         </ul>
       <% end %>
