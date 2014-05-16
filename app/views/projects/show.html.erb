@@ -1,22 +1,15 @@
-<p id="notice"><%= notice %></p>
-
-<p>
-  <strong>Title:</strong>
+<h2>
   <%= @project.title %>
-</p>
-
+  <small><%= project_status_label(@project.status) %></small>
+</h2>
 <p>
-  <strong>Description:</strong>
   <%= @project.description %>
 </p>
 
-<p>
-  <strong>Status:</strong>
-  <%= project_status_label(@project.status) %>
-</p>
+<%= link_to 'Edit', edit_project_path(@project), class: 'btn btn-primary' %>
+<%= link_to 'Back', projects_path, class: 'btn btn-default' %>
 
-<%= link_to 'Edit', edit_project_path(@project) %> |
-<%= link_to 'Back', projects_path %>
+<hr />
 
 <h3>Comments</h3>
 <div class="comments">
@@ -26,5 +19,5 @@
 <%= simple_form_for [@project, @comment], remote: true do |f| %>
   <h3>Post a reply</h3>
   <%= f.input :text, label: false %>
-  <%= f.submit 'Submit' %>
+  <%= f.submit 'Submit', class: 'btn btn-primary' %>
 <% end %>
