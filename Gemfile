@@ -43,7 +43,10 @@ gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'letter_opener'
 gem 'sucker_punch'
 gem 'carrierwave'
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 group :development do
   gem 'faker', '~> 1.3.0'
+  gem 'foreman'
 end
