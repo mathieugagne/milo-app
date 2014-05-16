@@ -3,7 +3,7 @@ module TablesHelper
   def sortable_header column, title=nil
     title ||= column.to_s.titleize
     direction = is_sorted_column?(column) && is_ascending? ? "desc" : "asc"
-    link_to title, { sort: column, direction: direction }
+    link_to title, { sort: column, direction: direction, q: params[:q] }
   end
 
   private
