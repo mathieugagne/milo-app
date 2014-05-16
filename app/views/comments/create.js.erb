@@ -1,0 +1,5 @@
+<% if @comment.valid? %>
+  $("<%= escape_javascript(render @comment) %>").prependTo(".comments");
+  $('#new_comment')[0].reset()
+<% end %>
+new Notification("<%= @message %>", "<%= @message_type %>");

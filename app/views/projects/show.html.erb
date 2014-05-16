@@ -23,10 +23,8 @@
   <%= render @comments %>
 </div>
 
-<%= form_for [@project, @comment] do |f| %>
+<%= simple_form_for [@project, @comment], remote: true do |f| %>
   <h3>Post a reply</h3>
-  <div class="field">
-    <%= f.text_area :text %>
-  </div>
+  <%= f.input :text, label: false %>
   <%= f.submit 'Submit' %>
 <% end %>

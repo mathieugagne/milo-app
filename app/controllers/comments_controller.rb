@@ -4,9 +4,17 @@ class CommentsController < ApplicationController
     @comment = @project.comments.new(comment_params)
     @comment.user = current_user
     if @comment.save
-      redirect_to @project, notice: 'Comment was successfully posted.'
+      respond_to do |format|
+        @message = 'Comment was successfully posted.'
+        format.html { redirect_to @project, notice: @message }
+        format.js { @message_type = 'notice' }
+      end
     else
-      redirect_to @project, alert: @comment.errors.full_messages.join('. ')
+      respond_to do |format|
+        @message = @comment.errors.full_messages.join('. ')
+        format.html { redirect_to @project, alert: @message }
+        format.js { @message_type = 'alert' }
+      end
     end
   end
 
