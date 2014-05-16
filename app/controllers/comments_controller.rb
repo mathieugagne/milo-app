@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     if @comment.save
       subject = "#{current_user.email} commented about Project: #{@project.title}"
-      Notifier.notify_users(@comment, subject).deliver
+      CommentNotifierWorker.new.async.perform(@comment.id, subject)
       respond_to do |format|
         @message = 'Comment was successfully posted.'
         format.html { redirect_to @project, notice: @message }

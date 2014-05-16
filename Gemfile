@@ -41,6 +41,7 @@ gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'icon_tag'
 gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'letter_opener'
+gem 'sucker_punch'
 
 group :development do
   gem 'faker', '~> 1.3.0'
