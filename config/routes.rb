@@ -7,6 +7,7 @@ Rails.application.routes.draw do
 
   devise_for :users
   resources :projects do
+    get :search, on: :collection
     resources :comments, only: :create
   end
 
