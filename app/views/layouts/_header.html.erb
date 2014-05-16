@@ -14,11 +14,11 @@
     <!-- Collect the nav links, forms, and other content for toggling -->
     <div class="collapse navbar-collapse" id="navbar">
       <ul class="nav navbar-nav">
-        <li><%= link_to '+ New Project', new_project_path %></li>
+        <li><%= link_to "#{icon_tag('plus-circle')} New Project".html_safe, new_project_path %></li>
       </ul>
       <ul class="nav navbar-nav navbar-right">
         <% if user_signed_in? %>
-          <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+          <li><%= link_to "#{icon_tag('sign-out')} Logout".html_safe, destroy_user_session_path, method: :delete %></li>
         <% end %>
       </ul>
     </div><!-- /.navbar-collapse -->
