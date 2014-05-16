@@ -8,6 +8,7 @@
       <th><%= sortable_header :title %></th>
       <th><%= sortable_header :description %></th>
       <th class='text-center'><%= sortable_header :status %></th>
+      <th>Assigned to</th>
       <th class='text-center'><%= sortable_header :comments_count, 'Comments' %></th>
       <th colspan="3"></th>
     </tr>
@@ -19,6 +20,7 @@
         <td><%= link_to project.title, project %></td>
         <td class='text-muted'><%= truncate(project.description, length: 100, separator: ' ') %></td>
         <td class='text-center'><%= project_status_label(project.status) %></td>
+        <td><%= project_user_list(project) %></td>
         <td class='text-center'><%= project.comments_count %></td>
         <td><%= link_to icon_tag('pencil'), edit_project_path(project), class: 'btn btn-default' %></td>
         <td><%= link_to icon_tag('trash-o'), project, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>

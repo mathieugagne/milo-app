@@ -11,4 +11,9 @@ module ProjectsHelper
     content_tag(:span, status, class: "label label-#{status_class}")
   end
 
+  def project_user_list project
+    list = project.users.map(&:email)
+    list.any? ? list.join(', ') : content_tag(:span, 'None assigned.', class: 'text-muted')
+  end
+
 end

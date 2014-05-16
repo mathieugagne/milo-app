@@ -56,7 +56,7 @@ class ProjectsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def project_params
-    params.require(:project).permit(:title, :description, :status)
+    params.require(:project).permit(:title, :description, :status, {user_ids: []})
   end
 
   def sort_column

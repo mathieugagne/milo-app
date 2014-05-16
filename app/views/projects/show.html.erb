@@ -3,6 +3,9 @@
   <small><%= project_status_label(@project.status) %></small>
 </h2>
 <p>
+  <strong>Assigned to:</strong> <%= project_user_list(@project) %>
+</p>
+<p>
   <%= @project.description %>
 </p>
 
