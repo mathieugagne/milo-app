@@ -1,12 +1,24 @@
 <h1 class="page-header"><%= current_user.email %>'s Profile</h1>
 
-<h3>Currently working on</h3>
+<div class="row">
+  <div class="col-md-6">
+    <h3>Avatar</h3>
+    <%= simple_form_for current_user do |f| %>
+      <%= image_tag current_user.avatar_url, alt: '', class: 'thumbnail' if current_user.avatar? %>
+      <%= f.input :avatar %>
+      <%= f.submit 'Update Profile', class: 'btn btn-primary' %>
+    <% end %>
+  </div>
+  <div class="col-md-6">
+    <h3>Currently working on</h3>
 
-<ul class="list-group">
-  <% @projects.each do |p| %>
-    <li class="list-group-item">
-      <span class="pull-right"><%= project_status_label(p.status) %></span>
-      <%= link_to p.title, p %>
-    </li>
-  <% end %>
-</ul>
+    <ul class="list-group">
+      <% @projects.each do |p| %>
+        <li class="list-group-item">
+          <span class="pull-right"><%= project_status_label(p.status) %></span>
+          <%= link_to p.title, p %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+</div>
