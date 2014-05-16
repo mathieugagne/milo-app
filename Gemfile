@@ -44,10 +44,11 @@ gem 'letter_opener'
 gem 'sucker_punch'
 gem 'carrierwave'
 gem 'mini_magick'
-gem 'sunspot_rails'
-gem 'sunspot_solr'
+gem 'sunspot_rails', '2.1.1'
 
 group :development do
   gem 'faker', '~> 1.3.0'
+  gem 'sunspot_solr', '2.1.1'
   gem 'foreman'
+  gem 'better_errors'
 end
