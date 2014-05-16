@@ -43,6 +43,7 @@ gem 'kaminari', github: 'amatsuda/kaminari'
 gem 'letter_opener'
 gem 'sucker_punch'
 gem 'carrierwave'
+gem 'mini_magick'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
 
